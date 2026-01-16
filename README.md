@@ -12,6 +12,7 @@ API REST construida con FastAPI para obtener licitaciones del portal oficial de 
 - ✅ Exportación a CSV y JSON
 - ✅ Documentación interactiva (Swagger UI)
 - ✅ Modo headless (sin interfaz gráfica)
+- ✅ Autenticación con API Key
 
 ## 🚀 Instalación
 
@@ -55,30 +56,56 @@ source venv/bin/activate
 ```bash
 pip install -r requirements.txt
 ```
+4. **Configurar autenticación:**
 
-## 🎯 Uso
-
-### Iniciar el servidor
-
+Crea un archivo `.env` en la raíz del proyecto:
 ```bash
-python main.py
+# Windows
+copy .env.example .env
+
+# Linux
+cp .env.example .env
 ```
 
-El servidor estará disponible en: `http://localhost:8000`
-
-**Documentación interactiva:** `http://localhost:8000/docs`
-
-### Endpoints disponibles
-
-#### **GET /** - Información de la API
+Edita el archivo `.env` y genera tu API Key:
+```env
+API_KEY=tu_clave_secreta_aqui
+```
+ (público)
 ```bash
 curl http://localhost:8000/
 ```
 
-#### **GET /health** - Estado del servicio
+#### **GET /health** - Estado del servicio (público)
 ```bash
 curl http://localhost:8000/health
 ```
+
+#### **GET /licitaciones** - Obtener licitaciones (requiere autenticación)
+
+⚠️ **Todos los ejemplos requieren el header `X-API-Key` con tu clave**
+
+**Sin parámetros** (licitaciones de hoy):
+```bash
+curl -H "X-API-Key: TU_API_KEY" http://localhost:8000/licitaciones
+```
+
+**Con códigos CPV** (Software y Servicios TI):
+```bash
+curl -H "X-API-Key: TU_API_KEY" \
+     "http://localhost:8000/licitaciones?cpv_codes=48000000,72000000"
+```
+
+**Con rango de fechas:**
+```bash
+curl -H "X-API-Key: TU_API_KEY" \
+     "http://localhost:8000/licitaciones?fecha_desde=01-01-2026&fecha_hasta=31-01-2026"
+```
+
+**Ejemplo completo:**
+```bash
+curl -H "X-API-Key: TU_API_KEY" \
+    
 
 #### **GET /licitaciones** - Obtener licitaciones
 
@@ -119,18 +146,26 @@ curl "http://localhost:8000/licitaciones?cpv_codes=48000000&fecha_desde=10-01-20
       "tipo": "Servicios",
       "subtipo": "Servicios informáticos",
       "estado": "Publicada",
-      "importe": "50,000.00",
-      "fecha": "15/01/2026",
-      "organismo": "Ministerio de...",
-      "enlace": "https://contrataciondelestado.es/..."
-    }
-  ]
-}
+      "importe": "50,000
+
+El archivo `.env` es **obligatorio** para la autenticación:
+
+```env
+# Seguridad (OBLIGATORIO)
+API_KEY=tu_clave_secreta_generada
+
+# API Configuration (opcional)
+API_HOST=127.0.0.1
+API_PORT=8000
+
+# Scraping Configuration (opcional)
+HEADLESS=true
+TIMEOUT=120
 ```
 
-## 📂 Estructura del proyecto
-
-```
+**Generar API Key segura:**
+```bash
+python -c "import secrets; print(secrets.token_urlsafe(32))"
 scraping-contrataciones/
 ├── main.py                 # FastAPI app principal
 ├── scraper_selenium.py     # Lógica de scraping con Selenium
@@ -168,9 +203,19 @@ TIMEOUT=120
 sudo apt update && sudo apt upgrade -y
 
 # Instalar Chrome y dependencias (ver sección de requisitos)
-```
 
-### 2. Subir archivos
+# Crear entorno virtual
+python3 -m venv venv
+source venv/bin/activate
+
+# Instalar dependencias
+pip install -r requirements.txt
+
+# IMPORTANTE: Crear archivo .env con tu API Key
+nano .env
+# Agregar: API_KEY=tu_clave_generada_aqui
+
+# Ejecutar
 
 ```bash
 # Desde Windows (PowerShell)
