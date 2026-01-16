@@ -1,0 +1,114 @@
+[
+  {
+    "type": "submit",
+    "name": "viewns_Z7_AVEQAI930OBRD02JPMTPG21004_:form1:button1Arriba",
+    "placeholder": "",
+    "id": "viewns_Z7_AVEQAI930OBRD02JPMTPG21004_:form1:button1Arriba",
+    "value": "Search"
+  },
+  {
+    "type": "submit",
+    "name": "viewns_Z7_AVEQAI930OBRD02JPMTPG21004_:form1:button2352Arriba",
+    "placeholder": "",
+    "id": "viewns_Z7_AVEQAI930OBRD02JPMTPG21004_:form1:button2352Arriba",
+    "value": "Clean"
+  },
+  {
+    "type": "text",
+    "name": "viewns_Z7_AVEQAI930OBRD02JPMTPG21004_:form1:text71ExpMAQ",
+    "placeholder": "",
+    "id": "viewns_Z7_AVEQAI930OBRD02JPMTPG21004_:form1:text71ExpMAQ",
+    "value": ""
+  },
+  {
+    "type": "text",
+    "name": "viewns_Z7_AVEQAI930OBRD02JPMTPG21004_:form1:textLugarEjecucion",
+    "placeholder": "",
+    "id": "viewns_Z7_AVEQAI930OBRD02JPMTPG21004_:form1:textLugarEjecucion",
+    "value": ""
+  },
+  {
+    "type": "text",
+    "name": "viewns_Z7_AVEQAI930OBRD02JPMTPG21004_:form1:cpvMultiple:codigoCpv",
+    "placeholder": "",
+    "id": "viewns_Z7_AVEQAI930OBRD02JPMTPG21004_:form1:cpvMultiple:codigoCpv",
+    "value": ""
+  },
+  {
+    "type": "text",
+    "name": "viewns_Z7_AVEQAI930OBRD02JPMTPG21004_:form1:texoorganoMAQ",
+    "placeholder": "",
+    "id": "viewns_Z7_AVEQAI930OBRD02JPMTPG21004_:form1:texoorganoMAQ",
+    "value": ""
+  },
+  {
+    "type": "text",
+    "name": "viewns_Z7_AVEQAI930OBRD02JPMTPG21004_:form1:textMinFecAnuncioMAQ2",
+    "placeholder": "",
+    "id": "viewns_Z7_AVEQAI930OBRD02JPMTPG21004_:form1:textMinFecAnuncioMAQ2",
+    "value": ""
+  },
+  {
+    "type": "text",
+    "name": "viewns_Z7_AVEQAI930OBRD02JPMTPG21004_:form1:textMaxFecAnuncioMAQ",
+    "placeholder": "",
+    "id": "viewns_Z7_AVEQAI930OBRD02JPMTPG21004_:form1:textMaxFecAnuncioMAQ",
+    "value": ""
+  },
+  {
+    "type": "text",
+    "name": "viewns_Z7_AVEQAI930OBRD02JPMTPG21004_:form1:textEstimadoDesde18MAQ",
+    "placeholder": "",
+    "id": "viewns_Z7_AVEQAI930OBRD02JPMTPG21004_:form1:textEstimadoDesde18MAQ",
+    "value": ""
+  },
+  {
+    "type": "text",
+    "name": "viewns_Z7_AVEQAI930OBRD02JPMTPG21004_:form1:textEstimado19MAQ",
+    "placeholder": "",
+    "id": "viewns_Z7_AVEQAI930OBRD02JPMTPG21004_:form1:textEstimado19MAQ",
+    "value": ""
+  },
+  {
+    "type": "text",
+    "name": "viewns_Z7_AVEQAI930OBRD02JPMTPG21004_:form1:textMinFecLimite",
+    "placeholder": "",
+    "id": "viewns_Z7_AVEQAI930OBRD02JPMTPG21004_:form1:textMinFecLimite",
+    "value": ""
+  },
+  {
+    "type": "text",
+    "name": "viewns_Z7_AVEQAI930OBRD02JPMTPG21004_:form1:textMaxFecLimite",
+    "placeholder": "",
+    "id": "viewns_Z7_AVEQAI930OBRD02JPMTPG21004_:form1:textMaxFecLimite",
+    "value": ""
+  },
+  {
+    "type": "text",
+    "name": "viewns_Z7_AVEQAI930OBRD02JPMTPG21004_:form1:texAdjudicatarioMAQ",
+    "placeholder": "",
+    "id": "viewns_Z7_AVEQAI930OBRD02JPMTPG21004_:form1:texAdjudicatarioMAQ",
+    "value": ""
+  },
+  {
+    "type": "submit",
+    "name": "viewns_Z7_AVEQAI930OBRD02JPMTPG21004_:form1:idBotonVolver",
+    "placeholder": "",
+    "id": "viewns_Z7_AVEQAI930OBRD02JPMTPG21004_:form1:idBotonVolver",
+    "value": "go back"
+  },
+  {
+    "type": "submit",
+    "name": "viewns_Z7_AVEQAI930OBRD02JPMTPG21004_:form1:button1",
+    "placeholder": "",
+    "id": "viewns_Z7_AVEQAI930OBRD02JPMTPG21004_:form1:button1",
+    "value": "Search"
+  },
+  {
+    "type": "submit",
+    "name": "viewns_Z7_AVEQAI930OBRD02JPMTPG21004_:form1:button2352",
+    "placeholder": "",
+    "id": "viewns_Z7_AVEQAI930OBRD02JPMTPG21004_:form1:button2352",
+    "value": "Clean"
+  }
+]

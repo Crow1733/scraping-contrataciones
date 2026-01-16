@@ -1,0 +1,10 @@
+requests
+beautifulsoup4
+pandas
+schedule
+python-dotenv
+lxml
+selenium
+webdriver-manager
+fastapi
+uvicorn[standard]
