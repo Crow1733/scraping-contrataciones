@@ -1,5 +1,12 @@
 import os
 from datetime import datetime
+from dotenv import load_dotenv
+
+# Cargar variables de entorno
+load_dotenv()
+
+# Configuración de seguridad
+API_KEY = os.getenv("API_KEY", "tu_clave_super_secreta_cambiar_en_produccion")
 
 # Configuración base
 BASE_URL = "https://contrataciondelestado.es"

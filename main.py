@@ -3,13 +3,14 @@ API FastAPI para scraping de licitaciones
 Endpoint principal para consultar licitaciones del día
 """
 
-from fastapi import FastAPI, HTTPException, Query
+from fastapi import FastAPI, HTTPException, Query, Header, Depends
 from fastapi.responses import JSONResponse
 from datetime import datetime
 from typing import Dict, List, Optional
 import traceback
 from scraper_selenium import ejecutar_scraping
 from logger import setup_logger
+from config import API_KEY
 
 # Configurar logger
 logger = setup_logger(__name__)
@@ -20,6 +21,18 @@ app = FastAPI(
     description="API para obtener licitaciones de contrataciondelestado.es",
     version="1.0.0"
 )
+
+
+# Middleware de autenticación
+async def verify_api_key(x_api_key: str = Header(..., description="API Key de autenticación")):
+    """Verifica que el API Key sea válido"""
+    if x_api_key != API_KEY:
+        logger.warning(f"Intento de acceso con API Key inválida")
+        raise HTTPException(
+            status_code=403,
+            detail="API Key inválida. Incluye el header 'X-API-Key' con tu token de acceso."
+        )
+    return x_api_key
 
 
 @app.get("/")
@@ -61,7 +74,7 @@ async def health():
     }
 
 
-@app.get("/licitaciones")
+@app.get("/licitaciones", dependencies=[Depends(verify_api_key)])
 async def obtener_licitaciones(
     cpv_codes: Optional[str] = Query(
         default=None,
