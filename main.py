@@ -54,12 +54,12 @@ async def root():
             "fecha_desde": {
                 "descripcion": "Fecha de inicio del rango de búsqueda en formato DD-MM-YYYY (opcional)",
                 "ejemplo": "01-01-2026",
-                "comportamiento": "Si no se especifica, usa la fecha de hoy. Debe estar en formato DD-MM-YYYY."
+                "comportamiento": "Si no se especifica, usa la fecha de ayer. Debe estar en formato DD-MM-YYYY."
             },
             "fecha_hasta": {
                 "descripcion": "Fecha de fin del rango de búsqueda en formato DD-MM-YYYY (opcional)",
                 "ejemplo": "31-01-2026",
-                "comportamiento": "Si no se especifica, usa la fecha de hoy. Debe estar en formato DD-MM-YYYY."
+                "comportamiento": "Si no se especifica, usa la fecha de ayer. Debe estar en formato DD-MM-YYYY."
             }
         }
     }
@@ -99,15 +99,15 @@ async def obtener_licitaciones(
     Filtra por:
     - Estado: Publicada
     - CPV: Códigos CPV personalizables (opcional - si no se especifica, no filtra por CPV)
-    - Fecha: Rango de fechas personalizable (opcional - si no se especifica, usa hoy)
+    - Fecha: Rango de fechas personalizable (opcional - si no se especifica, usa ayer)
     
     Args:
         cpv_codes: Códigos CPV separados por comas (ej: 48000000,72000000). 
                    Si no se proporciona, NO filtra por CPV y devuelve todas las licitaciones.
         fecha_desde: Fecha desde en formato DD-MM-YYYY (ej: 01-01-2026).
-                     Si no se proporciona, usa la fecha de hoy.
+                     Si no se proporciona, usa la fecha de ayer.
         fecha_hasta: Fecha hasta en formato DD-MM-YYYY (ej: 31-01-2026).
-                     Si no se proporciona, usa la fecha de hoy.
+                     Si no se proporciona, usa la fecha de ayer.
     
     Returns:
         JSONResponse con las licitaciones encontradas
@@ -130,12 +130,12 @@ async def obtener_licitaciones(
         if fecha_desde:
             logger.info(f"Fecha desde: {fecha_desde}")
         else:
-            logger.info("Fecha desde: hoy")
+            logger.info("Fecha desde: ayer")
         
         if fecha_hasta:
             logger.info(f"Fecha hasta: {fecha_hasta}")
         else:
-            logger.info("Fecha hasta: hoy")
+            logger.info("Fecha hasta: ayer")
         
         # Ejecutar el scraping con los parámetros especificados
         resultado = ejecutar_scraping(

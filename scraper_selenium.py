@@ -207,21 +207,21 @@ class LicitacionesScraperSelenium:
                 logger.info("LLENANDO FORMULARIO DE BÚSQUEDA")
                 logger.info("="*80)
                 
-                # Obtener fechas (usar las proporcionadas o las de hoy por defecto)
+                # Obtener fechas (usar las proporcionadas o las de ayer por defecto)
                 from datetime import datetime, timedelta
                 from selenium.webdriver.support.ui import Select
-                hoy = datetime.now()
+                ayer = datetime.now() - timedelta(days=1)
                 
-                # Si no se proporcionan fechas, usar hoy
+                # Si no se proporcionan fechas, usar ayer
                 if self.fecha_desde:
                     fecha_desde = self.fecha_desde
                 else:
-                    fecha_desde = hoy.strftime("%d-%m-%Y")
+                    fecha_desde = ayer.strftime("%d-%m-%Y")
                 
                 if self.fecha_hasta:
                     fecha_hasta = self.fecha_hasta
                 else:
-                    fecha_hasta = hoy.strftime("%d-%m-%Y")
+                    fecha_hasta = ayer.strftime("%d-%m-%Y")
                 
                 logger.info(f"\nBuscando licitaciones publicadas entre: {fecha_desde} y {fecha_hasta}")
                 if self.cpv_codes:
@@ -587,9 +587,9 @@ def ejecutar_scraping(cpv_codes=None, fecha_desde=None, fecha_hasta=None):
         cpv_codes: Lista de códigos CPV a filtrar (opcional)
                    Si es None, no filtra por CPV
         fecha_desde: Fecha desde en formato DD-MM-YYYY (opcional)
-                     Si es None, usa la fecha de hoy
+                     Si es None, usa la fecha de ayer
         fecha_hasta: Fecha hasta en formato DD-MM-YYYY (opcional)
-                     Si es None, usa la fecha de hoy
+                     Si es None, usa la fecha de ayer
     
     Returns:
         dict: Diccionario con los resultados del scraping
@@ -606,6 +606,8 @@ def ejecutar_scraping(cpv_codes=None, fecha_desde=None, fecha_hasta=None):
     logger.info("=" * 80)
     logger.info("EJECUTANDO SCRAPING VIA API")
     logger.info("=" * 80)
+    
+    from datetime import timedelta
     
     try:
         scraper = LicitacionesScraperSelenium(
@@ -626,14 +628,15 @@ def ejecutar_scraping(cpv_codes=None, fecha_desde=None, fecha_hasta=None):
                 with open(json_path, 'r', encoding='utf-8') as f:
                     licitaciones = json.load(f)
             
+            ayer = datetime.now() - timedelta(days=1)
             return {
                 'success': True,
                 'total_licitaciones': len(licitaciones),
                 'licitaciones': licitaciones,
                 'output_folder': scraper.output_folder,
                 'cpv_codes': cpv_codes,
-                'fecha_desde': fecha_desde if fecha_desde else datetime.now().strftime("%d-%m-%Y"),
-                'fecha_hasta': fecha_hasta if fecha_hasta else datetime.now().strftime("%d-%m-%Y")
+                'fecha_desde': fecha_desde if fecha_desde else ayer.strftime("%d-%m-%Y"),
+                'fecha_hasta': fecha_hasta if fecha_hasta else ayer.strftime("%d-%m-%Y")
             }
         else:
             logger.error("✗ Error en el scraping")
